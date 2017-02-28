@@ -1,0 +1,30 @@
+[submodule "Liu233w/.spacemacs.d"]
+	path = Liu233w/.spacemacs.d
+	url = git@github.com:Liu233w/.spacemacs.d.git
+[submodule "zhexuany/.spacemacs.d"]
+	path = zhexuany/.spacemacs.d
+	url = git@github.com:zhexuany/.spacemacs.d.git
+[submodule "lujun9972/.spacemacs.d"]
+	path = lujun9972/.spacemacs.d
+	url = git@github.com:lujun9972/.spacemacs.d.git
+[submodule "YiLiu6240/yxl-spacemacs"]
+	path = YiLiu6240/yxl-spacemacs
+	url = git@github.com:YiLiu6240/yxl-spacemacs.git
+[submodule "MephistoMMM/emacs_config"]
+	path = MephistoMMM/emacs_config
+	url = git@github.com:MephistoMMM/emacs_config.git
+[submodule "eggcaker/spacemacs-layers"]
+	path = eggcaker/spacemacs-layers
+	url = git@github.com:eggcaker/spacemacs-layers.git
+[submodule "eailfly/spacemaces-private"]
+	path = eailfly/spacemaces-private
+	url = git@github.com:eailfly/spacemaces-private.git
+[submodule "chrisbarrett/spacemacs-layers"]
+	path = chrisbarrett/spacemacs-layers
+	url = git@github.com:chrisbarrett/spacemacs-layers.git
+[submodule "appleshan/my-spacemacs-config"]
+	path = appleshan/my-spacemacs-config
+	url = https://github.com/appleshan/my-spacemacs-config.git
+[submodule "zilongshanren/spacemacs-private"]
+	path = zilongshanren/spacemacs-private
+	url = https://github.com/zilongshanren/spacemacs-private.git
