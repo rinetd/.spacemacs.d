@@ -33,22 +33,27 @@ values."
    '(
      ivy
      colors
-     github
-     better-defaults
+     (better-defaults :variables
+                      better-defaults-move-to-beginning-of-code-first t
+                      better-defaults-move-to-end-of-code-first nil)
      (ranger :variables
              ranger-header-func 'ranger-header-line
              ranger-parent-depth 1
-             ranger-max-preview-size 10
+             ranger-show-literal nil      ;;开启预览
+             ranger-ignored-extensions '("mkv" "iso" "mp4" "png" "jpeg" "jpg")
+             ranger-max-preview-size 1  ;;1M
              ranger-show-preview t)
+     docker
      prodigy
+     restclient
      search-engine
-     graphviz
-     (syntax-checking :variables syntax-checking-enable-by-default nil
-                      syntax-checking-enable-tooltips nil)
-     (spell-checking :variables spell-checking-enable-by-default nil)
-     (vinegar :variables vinegar-reuse-dired-buffer t)
+     (shell :variables shell-default-shell 'eshell)
+     (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
+
      (spacemacs-layouts :variables layouts-enable-autosave nil
                         layouts-autosave-delay 300)
+     deft
+     github
      (git :variables
           git-magit-status-fullscreen t
           magit-push-always-verify nil
@@ -56,41 +61,44 @@ values."
           magit-revert-buffers 'silent
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
+
+     (chinese :packages youdao-dictionary fcitx
+              :variables chinese-enable-fcitx nil
+              chinese-enable-youdao-dict t)
+     ;; (syntax-checking :variables syntax-checking-enable-by-default nil
+     ;;                  syntax-checking-enable-tooltips nil)
+     ;; (spell-checking :variables spell-checking-enable-by-default nil)
+     ;; (vinegar :variables vinegar-reuse-dired-buffer t)
      (ibuffer :variables ibuffer-group-buffers-by 'projects)
      (auto-completion :variables auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       :disabled-for org markdown)
-     (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English")
-     restclient
-     (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
-     (shell :variables shell-default-shell 'eshell)
-     docker
-     ;; latex
-     deft
-     markdown
+     ;; (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English")
+
      org
-     shaders
      yaml
-     react
-     (python :variables
-             python-test-runner '(nose pytest))
-     (ruby :variables ruby-version-manager 'chruby)
-     ruby-on-rails
-     lua
-     html
-     javascript
-     (typescript :variables
-                 typescript-fmt-on-save nil
-                 typescript-fmt-tool 'typescript-formatter)
+     markdown
+     graphviz
+     ;; latex
      emacs-lisp
-     (clojure :variables clojure-enable-fancify-symbols t)
-     racket
-     (c-c++ :variables
-            c-c++-default-mode-for-headers 'c++-mode)
+
+     ;; shaders
+     ;; react
+     ;; (python :variables
+     ;;         python-test-runner '(nose pytest))
+     ;; (ruby :variables ruby-version-manager 'chruby)
+     ;; ruby-on-rails
+     ;; lua
+     ;; html
+     ;; javascript
+     ;; (typescript :variables
+     ;;             typescript-fmt-on-save nil
+     ;;             typescript-fmt-tool 'typescript-formatter)
+     ;; (clojure :variables clojure-enable-fancify-symbols t)
+     ;; racket
+     ;; (c-c++ :variables
+     ;;        c-c++-default-mode-for-headers 'c++-mode)
      zilongshanren
-     (chinese :packages youdao-dictionary fcitx
-              :variables chinese-enable-fcitx nil
-              chinese-enable-youdao-dict t)
      rinetd
      )
    ;; List of additional packages that will be installed without being

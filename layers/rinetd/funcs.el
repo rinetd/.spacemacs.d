@@ -8,8 +8,12 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
+
+;; 重新定义W按键功能
 (with-eval-after-load 'evil
-  (defalias #'forward-evil-word #'forward-evil-symbol))
+  (defalias  #'forward-evil-WORD #'forward-evil-symbol)
+  ;; (defalias  #'forward-evil-word #'forward-evil-symbol)
+  )
 ;;(add-hook 'python-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 ;; (add-hook 'emacs-lisp-mode-hook #'(lambda ()
 ;;                                    (modify-syntax-entry ?- "w")

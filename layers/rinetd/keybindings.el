@@ -37,7 +37,6 @@
 ;; 移动
 (define-key evil-normal-state-map (kbd "-") nil)
 (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-or-subword-1)
-(define-key evil-normal-state-map (kbd "W") 'evil-forward-word-begin)
 (define-key evil-normal-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 
 ;; 行插入
