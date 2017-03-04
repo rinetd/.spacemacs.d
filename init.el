@@ -61,10 +61,6 @@ values."
           magit-revert-buffers 'silent
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
-
-     (chinese :packages youdao-dictionary fcitx
-              :variables chinese-enable-fcitx nil
-              chinese-enable-youdao-dict t)
      ;; (syntax-checking :variables syntax-checking-enable-by-default nil
      ;;                  syntax-checking-enable-tooltips nil)
      ;; (spell-checking :variables spell-checking-enable-by-default nil)
@@ -99,6 +95,14 @@ values."
      ;; (c-c++ :variables
      ;;        c-c++-default-mode-for-headers 'c++-mode)
      zilongshanren
+
+     (chinese :packages
+              :variables
+              ;;pangu-spacingchinese-enable-fcitx t
+              pangu-spacing-real-insert-separtor t ;;将空格加入 linux 到你的档案
+              ;;linux 或者有 fcitx-remote 才启用 fcitx 支持
+              chinese-enable-fcitx (or (spacemacs/system-is-linux) (executable-find "fcitx-remote"))
+              chinese-enable-youdao-dict t)
      rinetd
      )
    ;; List of additional packages that will be installed without being
@@ -371,7 +375,7 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
-  ;;解决org表格里面中英文对齐的问题
+  ;;解决 org 表格里面中英文对齐的问题
   (when (configuration-layer/layer-usedp 'chinese)
     (when (and (spacemacs/system-is-mac) window-system)
       (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))

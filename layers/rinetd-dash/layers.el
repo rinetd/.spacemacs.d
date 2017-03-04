@@ -10,11 +10,5 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-
-                                      rinetd-avy
-                                      rinetd-dash
-                                      rinetd-engine
-                                      ;; rinetd-org
-                                      ;; rinetd-chinese
-                                      ;; rinetd-org-journal
+                                      dash
                                       ))

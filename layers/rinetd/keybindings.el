@@ -10,7 +10,8 @@
 ;;; License: GPLv3
 
 
-(define-key evil-normal-state-map (kbd "$") (kbd "$")) ; H goes to beginning of the line
+;; (define-key evil-normal-state-map (kbd "$") (kbd "$"))
+                                        ; H goes to beginning of the line
 
 
 
