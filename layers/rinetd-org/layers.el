@@ -10,9 +10,7 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-                                      zilongshanren-misc
-                                      ;; zilongshanren-programming
-                                      zilongshanren-ui
-                                      zilongshanren-org
-                                      zilongshanren-better-defaults
+                                      org
+                                      rinetd-org-capture
+                                      rinetd-org-agenda
                                       ))

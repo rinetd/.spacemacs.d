@@ -24,7 +24,7 @@
         ace-window
         avy
         4clojure
-        persp-mode
+        ;; persp-mode
         helm-github-stars
         helm
         tiny
@@ -39,7 +39,7 @@
         hydra
         wrap-region
         helm-ag
-        ranger
+        ;; ranger
         golden-ratio
         (highlight-global :location (recipe :fetcher github :repo "glen-dai/highlight-global"))
         ))

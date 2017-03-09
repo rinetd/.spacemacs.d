@@ -272,7 +272,7 @@ unwanted space when exporting org-mode to html."
         "<div class='nav'>
 <ul>
 <li><a href='http://zilongshanren.com'>博客</a></li>
-<li><a href='/index.html'>Wiki目录</a></li>
+<li><a href='/index.html'>Wiki 目录</a></li>
 </ul>
 </div>")
       (defvar zilongshanren-website-html-blog-head
@@ -298,7 +298,7 @@ unwanted space when exporting org-mode to html."
                :email "guanghui8827@gmail.com"
                :auto-sitemap t          ; Generate sitemap.org automagically...
                :sitemap-filename "index.org" ; ... call it sitemap.org (it's the default)...
-               :sitemap-title "我的wiki"     ; ... with title 'Sitemap'.
+               :sitemap-title "我的 wiki"     ; ... with title 'Sitemap'.
                :sitemap-sort-files anti-chronologically
                :sitemap-file-entry-format "%t" ; %d to output date, we don't need date here
                )

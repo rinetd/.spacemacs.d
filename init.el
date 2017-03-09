@@ -16,11 +16,7 @@ values."
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
    ;; not listed in variable `dotspacemacs-configuration-layers'), `all' will
    ;; lazy install any layer that support lazy installation even the layers
-   ;; listed in `dotspacemacs-configuration-layers'. `nil' disable the lazy
-   ;; installation feature and you have to explicitly list a layer in the
-   ;; variable `dotspacemacs-configuration-layers' to install it.
-   ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation nil
+   ation nil
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation nil
@@ -31,6 +27,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     php
      ivy
      colors
      (better-defaults :variables
@@ -39,20 +36,37 @@ values."
      (ranger :variables
              ranger-header-func 'ranger-header-line
              ranger-parent-depth 1
-             ranger-show-literal nil      ;;开启预览
+             ranger-show-literal nil ;;开启预览
              ranger-ignored-extensions '("mkv" "iso" "mp4" "png" "jpeg" "jpg")
-             ranger-max-preview-size 1  ;;1M
+             ranger-max-preview-size 1 ;;1M
              ranger-show-preview t)
      docker
-     prodigy
      restclient
-     search-engine
-     (shell :variables shell-default-shell 'eshell)
+     (erc :variables
+          erc-server-list
+          '(("irc.freenode.net"
+             :port "6697"
+             :ssl t
+             :nick "rinetd"
+             :password "sdlylshl871016")
+
+            ("irc.myworkirc.net"
+             :port "1234"
+             :nick "some-suit"
+             :password "hunter2")))
+     ;; search-engine
+     (dash :variables helm-dash-docset-newpath "~/.local/share/Zeal/Zeal/docsets/")
+     (shell :variables
+            shell-default-shell (if (spacemacs/system-is-linux) 'eshell 'eshell)
+            ;; shell-default-term-shell "/usr/bin/zsh"
+            shell-protect-eshell-prompt t
+            shell-default-height 35
+            shell-default-position 'bottom
+            )
      (gtags :disabled-for clojure emacs-lisp javascript latex python shell-scripts)
 
      (spacemacs-layouts :variables layouts-enable-autosave nil
                         layouts-autosave-delay 300)
-     deft
      github
      (git :variables
           git-magit-status-fullscreen t
@@ -71,7 +85,7 @@ values."
                       :disabled-for org markdown)
      ;; (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English")
 
-     org
+     ;; org
      yaml
      markdown
      graphviz
@@ -94,8 +108,8 @@ values."
      ;; racket
      ;; (c-c++ :variables
      ;;        c-c++-default-mode-for-headers 'c++-mode)
+     rinetd
      zilongshanren
-
      (chinese :packages
               :variables
               ;;pangu-spacingchinese-enable-fcitx t
@@ -103,7 +117,14 @@ values."
               ;;linux 或者有 fcitx-remote 才启用 fcitx 支持
               chinese-enable-fcitx (or (spacemacs/system-is-linux) (executable-find "fcitx-remote"))
               chinese-enable-youdao-dict t)
-     rinetd
+
+     (deft :variables
+       deft-recursive t
+       deft-text-mode 'org-mode
+       deft-default-extension "org"
+       deft-directory "~/org-notes/"
+       deft-extensions '("org" "clj" "txt" "md" )
+       )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -113,7 +134,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
-   '(magit-gh-pulls magit-gitflow org-projectile evil-mc
+   '(tagedit magit-gh-pulls magit-gitflow org-projectile evil-mc
                     evil-args evil-ediff evil-exchange evil-unimpaired
                     evil-indent-plus volatile-highlights smartparens
                     spaceline holy-mode skewer-mode rainbow-delimiters
@@ -191,17 +212,17 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-light
-                         solarized-dark)
-   ;; If non nil the cursor color matches the state color in GUI Emacs.
+   dotspacemacs-themes '(spacemacs-light
+                         spacemacs-light)
+   ;; If non-nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 14
+                               :size 11.5
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -376,19 +397,19 @@ values."
 
 (defun dotspacemacs/user-config ()
   ;;解决 org 表格里面中英文对齐的问题
-  (when (configuration-layer/layer-usedp 'chinese)
-    (when (and (spacemacs/system-is-mac) window-system)
-      (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
+  ;; (when (configuration-layer/layer-usedp 'chinese)
+  ;;   (when (and (spacemacs/system-is-mac) window-system)
+  ;;     (spacemacs//set-monospaced-font "Source Code Pro" "Hiragino Sans GB" 14 16)))
 
   ;; Setting Chinese Font
-  (when (and (spacemacs/system-is-mswindows) window-system)
-    (setq ispell-program-name "aspell")
-    (setq w32-pass-alt-to-system nil)
-    (setq w32-apps-modifier 'super)
-    (dolist (charset '(kana han symbol cjk-misc bopomofo))
-      (set-fontset-font (frame-parameter nil 'font)
-                        charset
-                        (font-spec :family "Microsoft Yahei" :size 14))))
+  ;; (when (and (spacemacs/system-is-mswindows) window-system)
+  ;;   (setq ispell-program-name "aspell")
+  ;;   (setq w32-pass-alt-to-system nil)
+  ;;   (setq w32-apps-modifier 'super)
+  ;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
+  ;;     (set-fontset-font (frame-parameter nil 'font)
+  ;;                       charset
+  ;;                       (font-spec :family "Microsoft Yahei" :size 14))))
 
   (fset 'evil-visual-update-x-selection 'ignore)
 

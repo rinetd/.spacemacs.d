@@ -9,12 +9,16 @@
 ;;
 ;;; License: GPLv3
 
+(configuration-layer/remove-layer 'dash)
+
 (configuration-layer/declare-layers '(
 
                                       rinetd-avy
-                                      rinetd-dash
+                                      ;; rinetd-dash
                                       rinetd-engine
-                                      ;; rinetd-org
-                                      ;; rinetd-chinese
+                                      rinetd-prodigy
+                                      rinetd-org
+                                      rinetd-chinese
                                       ;; rinetd-org-journal
+                                      ;;appleshan-org
                                       ))
