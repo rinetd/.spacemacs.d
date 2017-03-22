@@ -10,7 +10,19 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-                                      org
-                                      rinetd-org-capture
-                                      rinetd-org-agenda
+                                      ;; (deft :variables
+                                      ;;   ;; deft-recursive t
+                                      ;;   deft-text-mode 'org-mode
+                                      ;;   deft-default-extension "org"
+                                      ;;   deft-directory "~/org-notes/"
+                                      ;;   deft-use-filename-as-title t
+                                      ;;   deft-extensions '("org" "clj" "txt" "md" )
+                                      ;;   )
+                                      ;; (org :packages
+                                      ;;      :variables
+                                      ;;      org-bullets-bullet-list '("■" "◆" "▲" "▶")
+                                      ;;      )
+                                      ;;rinetd-org-capture
+                                      ;;rinetd-org-agenda
+                                      ;;appleshan-org
                                       ))

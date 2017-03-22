@@ -21,7 +21,7 @@
               :size 13.5)))
 
 ;; chinese pyim
-(defvar *large-buffer-threshold* 300000
+(defvar *large-buffer-threshold* 3000
   "Buffer whose size beyond it will have a different behavior for the efficiency")
 
 (defvar chinese-default-input-method 'pinyin

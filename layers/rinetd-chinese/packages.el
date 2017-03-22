@@ -1,11 +1,46 @@
 
 (defconst rinetd-chinese-packages
   '(
+    (mule :location built-in)
     ;;chinese-pyim
     chinese-pyim-greatdict
     ;; chinese-fonts-setup
+    pangu-spacing
     ))
 
+;; Charset 设置
+(defun rinetd-chinese/init-mule ()
+  (use-package mule
+    :config
+    (progn
+      ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+      (setq utf-translate-cjk-mode nil)
+
+      ;; Always, always, prefer UTF-8, anything else is insanity
+      (when (or window-system (locale-is-utf8-p))
+        ;; 影响 chinese-pyim, 造成不能输入中文的故障
+        ;; set environment coding system
+        ;; (set-language-environment "UTF-8")
+
+        (set-charset-priority 'unicode)
+
+        ;; @see https://github.com/hick/emacs-chinese
+        (set-default-coding-systems 'utf-8)
+        (set-buffer-file-coding-system 'utf-8-unix)
+        (set-clipboard-coding-system 'utf-8-unix)
+        (set-file-name-coding-system 'utf-8-unix)
+        (set-keyboard-coding-system 'utf-8-unix)
+        (set-selection-coding-system 'utf-8-unix)
+        (set-next-selection-coding-system 'utf-8-unix)
+        (set-terminal-coding-system 'utf-8-unix)
+
+        (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+        (setq locale-coding-system 'utf-8)
+
+        ;; @see ~/.emacs.d/core/core-spacemacs.el:72
+        ;; (prefer-coding-system 'utf-8)
+        )
+    )))
 (defun rinetd-chinese/init-chinese-pyim ()
   (use-package chinese-pyim
     :if (eq 'pinyin chinese-default-input-method)
@@ -53,5 +88,34 @@
   (use-package chinese-fonts-setup)
   (chinese-fonts-setup-enable)
   )
+;; 覆盖 Chinese Layer 的 init 方法
+(defun rinetd-chinese/init-pangu-spacing ()
+  "覆盖 Chinese-layer 中的设置。默认关闭 pangu-spacing，只有在 buffer 比较小的时候才启动，
+如果是启动之后再关闭的话就开的太慢了。"
+  (use-package pangu-spacing
+    :init
+    (progn
+      (global-pangu-spacing-mode -1)
+      (spacemacs|hide-lighter pangu-spacing-mode)
+      ;; Always insert `real' space in org-mode.
+      (add-hook 'org-mode-hook
+                '(lambda ()
+                   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
 
+      (defun enable-pangu-spacing-when-buffer-not-large ()
+        "when buffer is not large, turn on it"
+        (when (< (buffer-size) *large-buffer-threshold*)
+          (pangu-spacing-mode 1)))
+
+      (dolist (i '(org-mode-hook prog-mode-hook text-mode-hook))
+        (add-hook i 'enable-pangu-spacing-when-buffer-not-large)))
+    :config
+    ;; add toggle options
+    (spacemacs|add-toggle toggle-pangu-spaceing
+      :status pangu-spacing-mode
+      :on (global-pangu-spacing-mode)
+      :off (global-pangu-spacing-mode -1)
+      :documentation "Toggle pangu spacing mode"
+      :evil-leader "tp")
+    ))
 ;;; packages.el ends here

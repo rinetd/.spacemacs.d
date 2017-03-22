@@ -1,9 +1,11 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
-(setq-default org-directory "~/org-notes/")
 
-;;(setq-default org-agenda-files (find-lisp-find-files 'org-directory "\.org$"))
+(setq-default org-directory "~/org-notes/")
+(unless (file-exists-p org-directory) (make-directory org-directory))
+
+;(setq-default org-agenda-files (find-lisp-find-files 'org-directory "\.org$"))
 
 ;;(setq org-default-notes-file (expand-file-name "notes.org" org-directory))
 

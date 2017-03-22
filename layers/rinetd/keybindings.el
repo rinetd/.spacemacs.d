@@ -18,18 +18,31 @@
 
 (define-key global-map [help] 'help-command)
 
-(spacemacs/declare-prefix "he" "emacs")
-;; rename prefix name
-;; (spacemacs/set-leader-keys "he" 'help-command)
 
 ;; git merge
 (spacemacs/set-leader-keys "ge" 'smerge-ediff)
 
-;; (spacemacs/set-leader-keys "`"    'spacemacs/alternate-buffer-in-persp)
-(spacemacs/set-leader-keys "`"    'ivy-switch-buffer)
-;; (spacemacs/set-leader-keys "TAB"  'spacemacs/alternate-window)
+(spacemacs/set-leader-keys "ESC"    'ivy-switch-buffer)
+(spacemacs/set-leader-keys "`"    'spacemacs/alternate-window)
 (spacemacs/set-leader-keys "TAB"  'other-window)
+
 (spacemacs/set-leader-keys "."  'spacemacs/fold-transient-state/body)
+
+;;zilongshanren
+(spacemacs/set-leader-keys "fl" 'find-file-literally-at-point)
+(spacemacs/set-leader-keys ":" 'counsel-M-x)
+(global-set-key (kbd "s-s") 'save-buffer)
+
+(spacemacs/declare-prefix "he" "emacs")
+;; rename prefix name
+;; (spacemacs/set-leader-keys "he" 'help-command)
+;; A complementary binding to the apropos-command (C-h a)
+(define-key 'help-command "A" 'apropos)
+(define-key 'help-command (kbd "C-f") 'find-function)
+(define-key 'help-command (kbd "C-k") 'find-function-on-key)
+(define-key 'help-command (kbd "C-v") 'find-variable)
+(define-key 'help-command (kbd "C-l") 'find-library)
+(define-key 'help-command (kbd "C-i") 'info-display-manual)
 
 (spacemacs/set-leader-keys
   "<right>"  'evil-window-right
@@ -43,13 +56,14 @@
 (global-set-key (kbd "<S-down>") 'evil-window-down)
 
 ;; 移动
-(define-key evil-normal-state-map (kbd "s") 'avy-goto-word-or-subword-1)
+(define-key evil-normal-state-map (kbd "S") 'avy-goto-word-or-subword-1)
 (define-key evil-normal-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 
 ;; atom 行插入
 (global-set-key (kbd "C-S-d") 'spacemacs/duplicate-line-or-region) ;;复制行
 (global-set-key (kbd "<C-S-return>") 'evil-open-above)   ;;上方插入空行
 (global-set-key (kbd "<C-return>") 'evil-open-below)     ;;下方插入空行
+(global-set-key [(shift return)] 'evil-open-below)
 
 (with-eval-after-load 'lispy
   (define-key lispy-mode-map (kbd "<C-return>") 'evil-open-below))

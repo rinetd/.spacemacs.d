@@ -38,7 +38,7 @@ values."
              ranger-parent-depth 1
              ranger-show-literal nil ;;开启预览
              ranger-ignored-extensions '("mkv" "iso" "mp4" "png" "jpeg" "jpg")
-             ranger-max-preview-size 1 ;;1M
+             ranger-max-preview-size 1 ;;1m
              ranger-show-preview t)
      docker
      restclient
@@ -55,7 +55,7 @@ values."
              :nick "some-suit"
              :password "hunter2")))
      ;; search-engine
-     (dash :variables helm-dash-docset-newpath "~/.local/share/Zeal/Zeal/docsets/")
+     (dash :variables helm-dash-docset-newpath "~/.local/share/zeal/zeal/docsets/")
      (shell :variables
             shell-default-shell (if (spacemacs/system-is-linux) 'eshell 'eshell)
             ;; shell-default-term-shell "/usr/bin/zsh"
@@ -83,9 +83,9 @@ values."
      (auto-completion :variables auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       :disabled-for org markdown)
-     ;; (osx :variables osx-dictionary-dictionary-choice "Simplified Chinese - English")
+     ;; (osx :variables osx-dictionary-dictionary-choice "simplified chinese - english")
 
-     ;; org
+     org
      yaml
      markdown
      graphviz
@@ -108,23 +108,21 @@ values."
      ;; racket
      ;; (c-c++ :variables
      ;;        c-c++-default-mode-for-headers 'c++-mode)
-     rinetd
      zilongshanren
      (chinese :packages
+              chinese-pyim
+              youdao-dictionary
               :variables
               ;;pangu-spacingchinese-enable-fcitx t
-              pangu-spacing-real-insert-separtor t ;;将空格加入 linux 到你的档案
+              ;; pangu-spacing-real-insert-separtor t ;;将空格加入 linux 到你的档案
               ;;linux 或者有 fcitx-remote 才启用 fcitx 支持
               chinese-enable-fcitx (or (spacemacs/system-is-linux) (executable-find "fcitx-remote"))
               chinese-enable-youdao-dict t)
 
-     (deft :variables
-       deft-recursive t
-       deft-text-mode 'org-mode
-       deft-default-extension "org"
-       deft-directory "~/org-notes/"
-       deft-extensions '("org" "clj" "txt" "md" )
-       )
+     rinetd
+
+     (crypt :variables
+            crypt-gpg-key "rinetd")
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -134,17 +132,17 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages
-   '(tagedit magit-gh-pulls magit-gitflow org-projectile evil-mc
+   '(tagedit magit-gh-pulls magit-gitflow  evil-mc
                     evil-args evil-ediff evil-exchange evil-unimpaired
                     evil-indent-plus volatile-highlights smartparens
                     spaceline holy-mode skewer-mode rainbow-delimiters
                     highlight-indentation vi-tilde-fringe eyebrowse
-                    org-bullets smooth-scrolling org-repo-todo org-download org-timer
+                     smooth-scrolling
                     livid-mode git-gutter git-gutter-fringe  evil-escape
                     leuven-theme gh-md evil-lisp-state spray lorem-ipsum
                     ac-ispell ace-jump-mode auto-complete auto-dictionary
                     clang-format define-word google-translate disaster epic
-                    fancy-battery org-present orgit orglue spacemacs-theme
+                    fancy-battery  orgit orglue spacemacs-theme
                     helm-flyspell flyspell-correct-helm clean-aindent-mode
                     helm-c-yasnippet ace-jump-helm-line helm-make magithub
                     helm-themes helm-swoop helm-spacemacs-help smeargle

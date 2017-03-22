@@ -65,7 +65,6 @@ Each entry is either:
                     ?t ?n ?z ?p ;; harder moves
                     ))
 
-    (define-key evil-normal-state-map (kbd "s") 'avy-goto-word-or-subword-1)
     (define-key evil-normal-state-map (kbd "gs") 'avy-goto-char)
     (define-key evil-normal-state-map (kbd "gl") 'avy-goto-line)
 

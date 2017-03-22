@@ -19,3 +19,15 @@
 
   ;; other
   "ob" 'org-iswitchb)
+
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "C-o" 'org-toggle-inline-images)
+(spacemacs/set-leader-keys-for-major-mode 'org-mode "it" 'org-insert-todo-heading)
+
+(global-set-key (kbd "<f1>") 'org-toggle-inline-images);; 显示/隐藏图片
+
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "RET") 'newline-and-indent) ;;回车后自动缩进
+  )
+
+(spacemacs/set-leader-keys-for-major-mode 'org-mode
+  "tl" 'org-toggle-link-display)

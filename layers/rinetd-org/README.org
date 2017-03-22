@@ -11,8 +11,18 @@
 
 * Description
 This layer does wonderful things:
-  - thing01
+  - org
+  - org-agenda
+  - org-capture
+  - org-archive
+  - org-src
+  - org-crypt
+  - org-clock
+  - org-
 
+    org mode 提供两种加密方式
+    1. 基于 EasyPG 的全文加密
+    2. 基于 org-crypt 标签加密
 * Install
 To use this configuration layer, add it to your =~/.spacemacs=. You will need to
 add =rinetd-org= to the existing =dotspacemacs-configuration-layers= list in this

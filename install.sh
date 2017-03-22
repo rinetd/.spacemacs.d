@@ -26,6 +26,8 @@ submodules=("
 git@github.com:Liu233w/.spacemacs.d.git
 git@github.com:zhexuany/.spacemacs.d.git
 git@github.com:lujun9972/.spacemacs.d.git
+git@github.com:ziyuanjun/.spacemacs.d.git
+git@github.com:chantisnake/configfiles.git
 git@github.com:YiLiu6240/yxl-spacemacs.git
 git@github.com:MephistoMMM/emacs_config.git
 git@github.com:eggcaker/spacemacs-layers.git
