@@ -28,3 +28,9 @@
 [submodule "zilongshanren/spacemacs-private"]
 	path = zilongshanren/spacemacs-private
 	url = https://github.com/zilongshanren/spacemacs-private.git
+[submodule "ziyuanjun/.spacemacs.d"]
+	path = ziyuanjun/.spacemacs.d
+	url = git@github.com:ziyuanjun/.spacemacs.d.git
+[submodule "chantisnake/configfiles"]
+	path = chantisnake/configfiles
+	url = git@github.com:chantisnake/configfiles.git
